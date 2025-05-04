@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('kue_id');
             $table->integer('jumlah');
             $table->date('tanggal_pesan');
+            $table->string('status');
             $table->timestamps();
         });
     }
