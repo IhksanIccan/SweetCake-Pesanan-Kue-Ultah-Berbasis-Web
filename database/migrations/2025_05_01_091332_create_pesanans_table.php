@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('kue_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('kue_id')->constrained()->onDelete('cascade');
             $table->integer('jumlah');
             $table->date('tanggal_pesan');
-            $table->string('status');
+            $table->string('status'); // contoh: "menunggu", "diproses", "selesai"
             $table->timestamps();
         });
     }

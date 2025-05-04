@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('kues', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kue');
-            $table->text('deskripsi')->nullable();
+            $table->text('deskripsi');
             $table->integer('harga');
-            $table->string('gambar')->nullable(); // untuk upload gambar
+            $table->string('gambar');
             $table->timestamps();
         });
     }
