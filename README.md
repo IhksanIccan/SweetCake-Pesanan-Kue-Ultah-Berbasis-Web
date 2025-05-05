@@ -70,78 +70,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   2025
 </p>
 
----
-
-## Role dan Fitur-fiturnya
-
-| Role  | Fitur                                                                                                                                   |
-| ----- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Admin | - Mengelola semua agenda (buat, edit, hapus) <br> - Mengelola data pengguna (guru dan siswa) <br> - Melihat siapa yang mendaftar agenda |
-| Guru  | - Membuat, mengedit, dan menghapus agenda miliknya sendiri <br> - Melihat siswa yang mendaftar ke agenda yang dibuat                    |
-| Siswa | - Melihat daftar agenda yang tersedia <br> - Mendaftar ke agenda yang dipilih                                                           |
-
----
-
-## Struktur Tabel Database
-
-### Tabel 1: [users]
-
-| Nama Field | Tipe Data    | Keterangan                        |
-| ---------- | ------------ | --------------------------------- |
-| id         | INT          | Primary key, auto increment       |
-| name       | VARCHAR(255) | Nama lengkap pengguna             |
-| email      | VARCHAR(255) | Email unik untuk login            |
-| password   | VARCHAR(255) | Password terenkripsi              |
-| role       | ENUM         | Role pengguna: admin, guru, siswa |
-| created_at | TIMESTAMP    | Waktu dibuat                      |
-| updated_at | TIMESTAMP    | Waktu diperbarui                  |
-
----
-
-### Tabel 2: [agenda]
-
-| Nama Field | Tipe Data    | Keterangan                                                |
-| ---------- | ------------ | --------------------------------------------------------- |
-| id         | INT          | Primary key, auto increment                               |
-| user_id    | INT          | ID pengguna yang membuat agenda (relasi ke tabel users) |
-| judul      | VARCHAR(255) | Judul agenda                                              |
-| deskripsi  | TEXT         | Deskripsi agenda (opsional)                               |
-| tanggal    | DATE         | Tanggal pelaksanaan agenda                                |
-| created_at | TIMESTAMP    | Waktu dibuat                                              |
-| updated_at | TIMESTAMP    | Waktu diperbarui                                          |
-
----
-
-### Tabel 3: [agenda_user]
-
-| Nama Field | Tipe Data | Keterangan                                               |
-| ---------- | --------- | -------------------------------------------------------- |
-| id         | INT       | Primary key, auto increment                              |
-| agenda_id  | INT       | ID agenda yang didaftarkan (relasi ke tabel agendas)   |
-| user_id    | INT       | ID siswa yang mendaftar agenda (relasi ke tabel users) |
-| created_at | TIMESTAMP | Waktu pendaftaran                                        |
-| updated_at | TIMESTAMP | Waktu pembaruan (jika ada)                               |
-
----
-
-## Relasi Antar Tabel
-
--   Tabel [users] memiliki relasi *one-to-many* dengan tabel [agenda].
-
-    -   Foreign key: user_id di [agenda] merujuk ke id di [users].
-    -   Penjelasan: 1 pengguna bisa membuat banyak agenda.
-
--   Tabel [agenda] memiliki relasi *one-to-many* dengan tabel [agenda_user].
-
-    -   Foreign key: agenda_id di [agenda_user] merujuk ke id di [agenda].
-    -   Penjelasan: 1 agenda bisa diikuti oleh banyak siswa.
-
--   Tabel [users] memiliki relasi *one-to-many* dengan tabel [agenda_user].
-    -   Foreign key: user_id di [agenda_user] merujuk ke id di [users].
-    -   Penjelasan: 1 siswa bisa mendaftar ke banyak agenda.
-
----
-
 <hr>
 
 <h2>Role dan Fitur-fiturnya</h2>
@@ -175,45 +103,68 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   </tr>
 </table>
 
-<h2>Struktur Tabel Database</h2>
+Siap! Berikut ini penjelasan semua tabel dalam proyek **SweetCake: Sistem Layanan Pesan Kue Ultah Berbasis Web** dalam format tabel markdown seperti yang kamu minta:
 
-<h3>Tabel: users</h3>
-<table>
-  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-  <tr><td>id</td><td>INT</td><td>Primary key, auto increment</td></tr>
-  <tr><td>name</td><td>VARCHAR(255)</td><td>Nama lengkap</td></tr>
-  <tr><td>email</td><td>VARCHAR(255)</td><td>Email unik</td></tr>
-  <tr><td>password</td><td>VARCHAR(255)</td><td>Password terenkripsi</td></tr>
-  <tr><td>role</td><td>ENUM</td><td>admin, customer, staff</td></tr>
-  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
-  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
-</table>
+---
 
-<h3>Tabel: kues</h3>
-<table>
-  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-  <tr><td>id</td><td>INT</td><td>Primary key</td></tr>
-  <tr><td>nama_kue</td><td>VARCHAR(255)</td><td>Nama kue</td></tr>
-  <tr><td>deskripsi</td><td>TEXT</td><td>Deskripsi kue</td></tr>
-  <tr><td>harga</td><td>INT</td><td>Harga kue</td></tr>
-  <tr><td>gambar</td><td>VARCHAR(255)</td><td>Path gambar</td></tr>
-  <tr><td>created_at</td><td>TIMESTAMP</td><td></td></tr>
-  <tr><td>updated_at</td><td>TIMESTAMP</td><td></td></tr>
-</table>
+## **Tabel 1: `users`**
 
-<h3>Tabel: pesanans</h3>
-<table>
-  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-  <tr><td>id</td><td>INT</td><td>Primary key</td></tr>
-  <tr><td>user_id</td><td>INT</td><td>Relasi ke users</td></tr>
-  <tr><td>kue_id</td><td>INT</td><td>Relasi ke kues</td></tr>
-  <tr><td>jumlah</td><td>INT</td><td>Jumlah pesanan</td></tr>
-  <tr><td>tanggal_pesan</td><td>DATE</td><td>Tanggal pemesanan</td></tr>
-  <tr><td>status</td><td>STRING</td><td>Status pesanan</td></tr>
-  <tr><td>created_at</td><td>TIMESTAMP</td><td></td></tr>
-  <tr><td>updated_at</td><td>TIMESTAMP</td><td></td></tr>
-</table>
+| Nama Field  | Tipe Data    | Keterangan                            |
+| ----------- | ------------ | ------------------------------------- |
+| id          | BIGINT       | Primary key, auto increment           |
+| name        | VARCHAR(255) | Nama lengkap pengguna                 |
+| email       | VARCHAR(255) | Email unik untuk login                |
+| password    | VARCHAR(255) | Password terenkripsi                  |
+| role        | ENUM         | Role pengguna: admin, customer, staff |
+| created\_at | TIMESTAMP    | Waktu data dibuat                     |
+| updated\_at | TIMESTAMP    | Waktu data diperbarui                 |
 
+---
+
+## **Tabel 2: `kues`**
+
+| Nama Field  | Tipe Data    | Keterangan                  |
+| ----------- | ------------ | --------------------------- |
+| id          | BIGINT       | Primary key, auto increment |
+| nama\_kue   | VARCHAR(255) | Nama kue                    |
+| deskripsi   | TEXT         | Deskripsi kue (opsional)    |
+| harga       | INTEGER      | Harga kue                   |
+| gambar      | VARCHAR(255) | Nama file gambar kue        |
+| created\_at | TIMESTAMP    | Waktu data dibuat           |
+| updated\_at | TIMESTAMP    | Waktu data diperbarui       |
+
+---
+
+## **Tabel 3: `pesanans`**
+
+| Nama Field     | Tipe Data   | Keterangan                                     |
+| -------------- | ----------- | ---------------------------------------------- |
+| id             | BIGINT      | Primary key, auto increment                    |
+| user\_id       | BIGINT      | Relasi ke tabel `users` (pelanggan pemesan)    |
+| kue\_id        | BIGINT      | Relasi ke tabel `kues` (kue yang dipesan)      |
+| jumlah         | INTEGER     | Jumlah pesanan                                 |
+| tanggal\_pesan | DATE        | Tanggal pemesanan                              |
+| status         | VARCHAR(50) | Status pemesanan (menunggu, diproses, selesai) |
+| created\_at    | TIMESTAMP   | Waktu data dibuat                              |
+| updated\_at    | TIMESTAMP   | Waktu data diperbarui                          |
+
+---
+
+## **Relasi Antar Tabel**
+
+* `users` **has many** `pesanans`
+
+  * Artinya: 1 user/customer bisa membuat banyak pesanan.
+
+* `kues` **has many** `pesanans`
+
+  * Artinya: 1 jenis kue bisa dipesan dalam banyak pesanan.
+
+* `pesanans` **belongs to** `users` dan `kues`
+
+  * Artinya: setiap pesanan terhubung ke 1 user dan 1 kue.
+
+---
 <h2>Relasi Antar Tabel</h2>
 <ul>
   <li><code>users</code> <strong>has many</strong> <code>pesanans</code></li>
