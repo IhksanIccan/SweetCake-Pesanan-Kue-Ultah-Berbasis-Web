@@ -64,28 +64,45 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laporan Proyek SweetCake</title>
+  <title>SweetCake - Sistem Pemesanan Kue Ultah</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f2f2f2; }
-    h2 { border-bottom: 2px solid #ddd; padding-bottom: 5px; }
-    p.center { text-align: center; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    table, th, td {
+      border: 1px solid #555;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .center {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
-<p class="center">
-  <b>SweetCake</b><br>
-  <i>(Sistem Layanan Pesan Kue Ultah Berbasis Web)</i><br><br>
-  <img src="images/logoUnsulbar.jpg" width="150"><br><br>
-  <b>Ihksan</b><br>
-  <b>D0223049</b><br><br>
-  Framework Web Based<br>
-  2025
-</p>
+  <div class="center">
+    <h2>SweetCake</h2>
+    <p><i>(Sistem Layanan Pesan Kue Ultah Berbasis Web)</i></p>
+    <img src="images/logoUnsulbar.jpg" width="150" alt="Logo Unsulbar"><br><br>
+    <strong>Ihksan</strong><br>
+    <strong>D0223049</strong><br><br>
+    Framework Web Based<br>
+    2025
+  </div>
 
 <hr>
 
