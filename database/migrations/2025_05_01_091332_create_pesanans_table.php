@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
-            
+
         });
+        
     }
 
     /**
