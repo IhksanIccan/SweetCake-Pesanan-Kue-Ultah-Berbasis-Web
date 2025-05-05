@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kues', function (Blueprint $table) {
             $table->id();
+            
         });
     }
 
