@@ -60,123 +60,87 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>SweetCake - Sistem Pemesanan Kue Ultah</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      line-height: 1.6;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 30px;
-    }
-    table, th, td {
-      border: 1px solid #555;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-    }
-    .center {
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
+<p align="center">
+  <b>Agenda Sekolah</b><br>
+  <i>(Manajemen Kegiatan Sekolah)</i><br><br>
+  <img src="images/logoUnsulbar.jpg" width="150"><br><br>
+  <b>Faril</b><br>
+  <b>D0223015</b><br><br>
+  Framework Web Based<br>
+  2025
+</p>
 
-  <div class="center">
-    <h2>SweetCake</h2>
-    <p><i>(Sistem Layanan Pesan Kue Ultah Berbasis Web)</i></p>
-    <img src="images/logoUnsulbar.jpg" width="150" alt="Logo Unsulbar"><br><br>
-    <strong>Ihksan</strong><br>
-    <strong>D0223049</strong><br><br>
-    Framework Web Based<br>
-    2025
-  </div>
+---
 
-  <hr>
+## Role dan Fitur-fiturnya
 
-  <h2>Role dan Fitur-fiturnya</h2>
-  <table>
-    <tr>
-      <th>Role</th>
-      <th>Fitur</th>
-    </tr>
-    <tr>
-      <td>Admin</td>
-      <td>
-        - Mengelola data kue (tambah, edit, hapus)<br>
-        - Melihat dan mengelola semua pesanan<br>
-        - Mengelola pengguna (opsional)
-      </td>
-    </tr>
-    <tr>
-      <td>User</td>
-      <td>
-        - Melihat daftar kue yang tersedia<br>
-        - Melakukan pemesanan kue<br>
-        - Melihat status pemesanan
-      </td>
-    </tr>
-  </table>
+| Role  | Fitur                                                                                                                                   |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Admin | - Mengelola semua agenda (buat, edit, hapus) <br> - Mengelola data pengguna (guru dan siswa) <br> - Melihat siapa yang mendaftar agenda |
+| Guru  | - Membuat, mengedit, dan menghapus agenda miliknya sendiri <br> - Melihat siswa yang mendaftar ke agenda yang dibuat                    |
+| Siswa | - Melihat daftar agenda yang tersedia <br> - Mendaftar ke agenda yang dipilih                                                           |
 
-  <h2>Struktur Tabel Database</h2>
+---
 
-  <h3>Tabel 1: <code>users</code></h3>
-  <table>
-    <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-    <tr><td>id</td><td>INT</td><td>Primary key, auto increment</td></tr>
-    <tr><td>name</td><td>VARCHAR(255)</td><td>Nama pengguna</td></tr>
-    <tr><td>email</td><td>VARCHAR(255)</td><td>Email unik</td></tr>
-    <tr><td>password</td><td>VARCHAR(255)</td><td>Password terenkripsi</td></tr>
-    <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
-    <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
-  </table>
+## Struktur Tabel Database
 
-  <h3>Tabel 2: <code>kues</code></h3>
-  <table>
-    <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-    <tr><td>id</td><td>INT</td><td>Primary key</td></tr>
-    <tr><td>nama_kue</td><td>VARCHAR(255)</td><td>Nama kue</td></tr>
-    <tr><td>deskripsi</td><td>TEXT</td><td>Deskripsi singkat</td></tr>
-    <tr><td>harga</td><td>INTEGER</td><td>Harga kue</td></tr>
-    <tr><td>gambar</td><td>VARCHAR</td><td>Nama file gambar</td></tr>
-    <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
-    <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
-  </table>
+### Tabel 1: [users]
 
-  <h3>Tabel 3: <code>pesanans</code></h3>
-  <table>
-    <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-    <tr><td>id</td><td>INT</td><td>Primary key</td></tr>
-    <tr><td>user_id</td><td>BIGINT</td><td>Relasi ke pengguna</td></tr>
-    <tr><td>kue_id</td><td>BIGINT</td><td>Relasi ke kue</td></tr>
-    <tr><td>jumlah</td><td>INTEGER</td><td>Jumlah kue yang dipesan</td></tr>
-    <tr><td>tanggal_pesan</td><td>DATE</td><td>Tanggal pemesanan</td></tr>
-    <tr><td>status</td><td>VARCHAR(50)</td><td>Status pemesanan (menunggu, diproses, selesai)</td></tr>
-    <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
-    <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
-  </table>
+| Nama Field | Tipe Data    | Keterangan                        |
+| ---------- | ------------ | --------------------------------- |
+| id         | INT          | Primary key, auto increment       |
+| name       | VARCHAR(255) | Nama lengkap pengguna             |
+| email      | VARCHAR(255) | Email unik untuk login            |
+| password   | VARCHAR(255) | Password terenkripsi              |
+| role       | ENUM         | Role pengguna: admin, guru, siswa |
+| created_at | TIMESTAMP    | Waktu dibuat                      |
+| updated_at | TIMESTAMP    | Waktu diperbarui                  |
 
-  <h2>Relasi Antar Tabel</h2>
-  <ul>
-    <li><strong>users</strong> → <strong>pesanans</strong>: One to Many (user bisa punya banyak pesanan)</li>
-    <li><strong>kues</strong> → <strong>pesanans</strong>: One to Many (satu jenis kue bisa dipesan banyak user)</li>
-  </ul>
+---
 
-</body>
-</html>
+### Tabel 2: [agenda]
 
+| Nama Field | Tipe Data    | Keterangan                                                |
+| ---------- | ------------ | --------------------------------------------------------- |
+| id         | INT          | Primary key, auto increment                               |
+| user_id    | INT          | ID pengguna yang membuat agenda (relasi ke tabel users) |
+| judul      | VARCHAR(255) | Judul agenda                                              |
+| deskripsi  | TEXT         | Deskripsi agenda (opsional)                               |
+| tanggal    | DATE         | Tanggal pelaksanaan agenda                                |
+| created_at | TIMESTAMP    | Waktu dibuat                                              |
+| updated_at | TIMESTAMP    | Waktu diperbarui                                          |
+
+---
+
+### Tabel 3: [agenda_user]
+
+| Nama Field | Tipe Data | Keterangan                                               |
+| ---------- | --------- | -------------------------------------------------------- |
+| id         | INT       | Primary key, auto increment                              |
+| agenda_id  | INT       | ID agenda yang didaftarkan (relasi ke tabel agendas)   |
+| user_id    | INT       | ID siswa yang mendaftar agenda (relasi ke tabel users) |
+| created_at | TIMESTAMP | Waktu pendaftaran                                        |
+| updated_at | TIMESTAMP | Waktu pembaruan (jika ada)                               |
+
+---
+
+## Relasi Antar Tabel
+
+-   Tabel [users] memiliki relasi *one-to-many* dengan tabel [agenda].
+
+    -   Foreign key: user_id di [agenda] merujuk ke id di [users].
+    -   Penjelasan: 1 pengguna bisa membuat banyak agenda.
+
+-   Tabel [agenda] memiliki relasi *one-to-many* dengan tabel [agenda_user].
+
+    -   Foreign key: agenda_id di [agenda_user] merujuk ke id di [agenda].
+    -   Penjelasan: 1 agenda bisa diikuti oleh banyak siswa.
+
+-   Tabel [users] memiliki relasi *one-to-many* dengan tabel [agenda_user].
+    -   Foreign key: user_id di [agenda_user] merujuk ke id di [users].
+    -   Penjelasan: 1 siswa bisa mendaftar ke banyak agenda.
+
+---
 
 <hr>
 
