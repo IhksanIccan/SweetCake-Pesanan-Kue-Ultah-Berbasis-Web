@@ -13,12 +13,7 @@ return new class extends Migration
     {
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('kue_id');
-            $table->integer('jumlah');
-            $table->date('tanggal_pesan');
-            $table->string('status');
-            $table->timestamps();
+            
         });
     }
 
