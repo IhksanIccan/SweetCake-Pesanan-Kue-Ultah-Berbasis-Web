@@ -61,11 +61,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
 <p align="center">
-  <b>Agenda Sekolah</b><br>
-  <i>(Manajemen Kegiatan Sekolah)</i><br><br>
+  <b>weetCake</b><br>
+  <i>(Pesanan Kue Ultah Berbasis Web)</i><br><br>
   <img src="images/logoUnsulbar.jpg" width="150"><br><br>
-  <b>Faril</b><br>
-  <b>D0223015</b><br><br>
+  <b>IHKSAN</b><br>
+  <b>D0223049</b><br><br>
   Framework Web Based<br>
   2025
 </p>
@@ -103,7 +103,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   </tr>
 </table>
 
-Siap! Berikut ini penjelasan semua tabel dalam proyek **SweetCake: Sistem Layanan Pesan Kue Ultah Berbasis Web** dalam format tabel markdown seperti yang kamu minta:
+Siap! Berikut ini penjelasan semua tabel dalam proyek **SweetCake:Pesanan Kue Ultah Berbasis Web** dalam format tabel markdown seperti yang kamu minta:
 
 ---
 
@@ -164,8 +164,6 @@ Siap! Berikut ini penjelasan semua tabel dalam proyek **SweetCake: Sistem Layana
 
   * Artinya: setiap pesanan terhubung ke 1 user dan 1 kue.
 
----
-<h2>Relasi Antar Tabel</h2>
 <ul>
   <li><code>users</code> <strong>has many</strong> <code>pesanans</code></li>
   <li><code>kues</code> <strong>has many</strong> <code>pesanans</code></li>
