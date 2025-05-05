@@ -162,11 +162,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
   * Artinya: setiap pesanan terhubung ke 1 user dan 1 kue.
 
-<ul>
-  <li><code>users</code> <strong>one to many</strong> <code>pesanans</code></li>
-  <li><code>kues</code> <strong>one to many</strong> <code>pesanans</code></li>
-  <li><code>pesanans</code> <strong>many to one</strong> <code>users</code> dan <code>kues</code></li>
-</ul>
-
 </body>
 </html>
