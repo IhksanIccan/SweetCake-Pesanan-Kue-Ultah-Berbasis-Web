@@ -64,44 +64,107 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>SweetCake - Pemesanan Kue Ultah Berbasis Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Proyek SweetCake</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      line-height: 1.6;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 30px;
-    }
-    table, th, td {
-      border: 1px solid #555;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-    }
-    .center {
-      text-align: center;
-    }
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    h2 { border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+    p.center { text-align: center; }
   </style>
 </head>
 <body>
 
-  <div class="center">
-    <h2>SweetCake</h2>
-    <p><i>(Pesanan Kue Ultah Berbasis Web)</i></p>
-    <img src="images/logoUnsulbar.jpg" width="150" alt="Logo Unsulbar"><br><br>
-    <strong>Ihksan</strong><br>
-    <strong>D0223049</strong><br><br>
-    Framework Web Based<br>
-    2025
-  </div>
+<p class="center">
+  <b>SweetCake</b><br>
+  <i>(Sistem Layanan Pesan Kue Ultah Berbasis Web)</i><br><br>
+  <img src="images/logoUnsulbar.jpg" width="150"><br><br>
+  <b>Ihksan</b><br>
+  <b>D0223049</b><br><br>
+  Framework Web Based<br>
+  2025
+</p>
 
-  
+<hr>
+
+<h2>Role dan Fitur-fiturnya</h2>
+<table>
+  <tr>
+    <th>Role</th>
+    <th>Fitur</th>
+  </tr>
+  <tr>
+    <td>Admin</td>
+    <td>
+      - Mengelola data kue (tambah, edit, hapus)<br>
+      - Mengelola pesanan<br>
+      - Mengelola data user
+    </td>
+  </tr>
+  <tr>
+    <td>Customer</td>
+    <td>
+      - Melihat daftar kue<br>
+      - Melakukan pemesanan kue<br>
+      - Melihat status pesanan
+    </td>
+  </tr>
+  <tr>
+    <td>Staff</td>
+    <td>
+      - Melihat daftar pesanan yang masuk<br>
+      - Memperbarui status pesanan (diproses, selesai, dll)
+    </td>
+  </tr>
+</table>
+
+<h2>Struktur Tabel Database</h2>
+
+<h3>Tabel: users</h3>
+<table>
+  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+  <tr><td>id</td><td>INT</td><td>Primary key, auto increment</td></tr>
+  <tr><td>name</td><td>VARCHAR(255)</td><td>Nama lengkap</td></tr>
+  <tr><td>email</td><td>VARCHAR(255)</td><td>Email unik</td></tr>
+  <tr><td>password</td><td>VARCHAR(255)</td><td>Password terenkripsi</td></tr>
+  <tr><td>role</td><td>ENUM</td><td>admin, customer, staff</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
+</table>
+
+<h3>Tabel: kues</h3>
+<table>
+  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+  <tr><td>id</td><td>INT</td><td>Primary key</td></tr>
+  <tr><td>nama_kue</td><td>VARCHAR(255)</td><td>Nama kue</td></tr>
+  <tr><td>deskripsi</td><td>TEXT</td><td>Deskripsi kue</td></tr>
+  <tr><td>harga</td><td>INT</td><td>Harga kue</td></tr>
+  <tr><td>gambar</td><td>VARCHAR(255)</td><td>Path gambar</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td></td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td></td></tr>
+</table>
+
+<h3>Tabel: pesanans</h3>
+<table>
+  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+  <tr><td>id</td><td>INT</td><td>Primary key</td></tr>
+  <tr><td>user_id</td><td>INT</td><td>Relasi ke users</td></tr>
+  <tr><td>kue_id</td><td>INT</td><td>Relasi ke kues</td></tr>
+  <tr><td>jumlah</td><td>INT</td><td>Jumlah pesanan</td></tr>
+  <tr><td>tanggal_pesan</td><td>DATE</td><td>Tanggal pemesanan</td></tr>
+  <tr><td>status</td><td>STRING</td><td>Status pesanan</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td></td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td></td></tr>
+</table>
+
+<h2>Relasi Antar Tabel</h2>
+<ul>
+  <li><code>users</code> <strong>has many</strong> <code>pesanans</code></li>
+  <li><code>kues</code> <strong>has many</strong> <code>pesanans</code></li>
+  <li><code>pesanans</code> <strong>belongs to</strong> <code>users</code> dan <code>kues</code></li>
+</ul>
+
+</body>
+</html>
