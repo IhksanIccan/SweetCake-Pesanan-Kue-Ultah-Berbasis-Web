@@ -102,9 +102,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     </td>
   </tr>
 </table>
-
-Siap! Berikut ini penjelasan semua tabel dalam proyek **SweetCake:Pesanan Kue Ultah Berbasis Web** dalam format tabel markdown seperti yang kamu minta:
-
 ---
 
 ## **Tabel 1: `users`**
