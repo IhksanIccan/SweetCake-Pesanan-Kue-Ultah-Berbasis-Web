@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id(); // BIGINT auto increment (primary key)
-            $table->string('name'); // Nama lengkap pengguna
-            $table->string('email')->unique(); // Email unik
-            $table->timestamp('email_verified_at')->nullable(); // Verifikasi email (nullable)
+            $table->id(); //
+            $table->string('name');
+            $table->string('email')->unique(); //
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password'); // Password terenkripsi
             $table->enum('role', ['admin', 'customer', 'staff']); // Role pengguna (admin, customer, staff)
-            $table->rememberToken(); // Token untuk fitur "remember me"
-            $table->timestamps(); // created_at & updated_at
+            $table->rememberToken(); 
+            $table->timestamps(); 
         });
         
 

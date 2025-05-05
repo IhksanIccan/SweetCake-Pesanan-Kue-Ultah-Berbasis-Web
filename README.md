@@ -154,7 +154,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
   * Artinya: 1 user/customer bisa membuat banyak pesanan.
 
-* `kues` **has many** `pesanans`
+* `kues` **one to many** `pesanans`
 
   * Artinya: 1 jenis kue bisa dipesan dalam banyak pesanan.
 
