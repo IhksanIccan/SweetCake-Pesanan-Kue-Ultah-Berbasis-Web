@@ -150,7 +150,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## **Relasi Antar Tabel**
 
-* `users` **has many** `pesanans`
+* `users` **one to many** `pesanans`
 
   * Artinya: 1 user/customer bisa membuat banyak pesanan.
 
@@ -158,14 +158,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
   * Artinya: 1 jenis kue bisa dipesan dalam banyak pesanan.
 
-* `pesanans` **belongs to** `users` dan `kues`
+* `pesanans` **many to one** `users` dan `kues`
 
   * Artinya: setiap pesanan terhubung ke 1 user dan 1 kue.
 
 <ul>
-  <li><code>users</code> <strong>has many</strong> <code>pesanans</code></li>
-  <li><code>kues</code> <strong>has many</strong> <code>pesanans</code></li>
-  <li><code>pesanans</code> <strong>belongs to</strong> <code>users</code> dan <code>kues</code></li>
+  <li><code>users</code> <strong>one to many</strong> <code>pesanans</code></li>
+  <li><code>kues</code> <strong>one to many</strong> <code>pesanans</code></li>
+  <li><code>pesanans</code> <strong>many to one</strong> <code>users</code> dan <code>kues</code></li>
 </ul>
 
 </body>
