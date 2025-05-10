@@ -73,7 +73,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 <hr>
 
 <h2>Role dan Fitur-fiturnya</h2>
-<table>
+<table border="1" cellspacing="0" cellpadding="5">
   <tr>
     <th>Role</th>
     <th>Fitur</th>
@@ -81,86 +81,88 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   <tr>
     <td>Admin</td>
     <td>
-      - Mengelola data kue (tambah, edit, hapus)<br>
-      - Mengelola pesanan<br>
-      - Mengelola data user
+      - Mengelola data user (tambah staff, edit, hapus)<br>
+      - Mengelola data kue<br>
+      - Mengelola seluruh pesanan
     </td>
   </tr>
   <tr>
     <td>Customer</td>
     <td>
       - Melihat daftar kue<br>
-      - Melakukan pemesanan kue<br>
-      - Melihat status pesanan
+      - Melakukan pemesanan<br>
+      - Melihat riwayat & status pesanan
     </td>
   </tr>
   <tr>
     <td>Staff</td>
     <td>
-      - Melihat daftar pesanan yang masuk<br>
-      - Memperbarui status pesanan (diproses, selesai, dll)
+      - Melihat pesanan yang masuk<br>
+      - Mengubah status pesanan (diproses, selesai, dibatalkan)
     </td>
   </tr>
 </table>
 
----
+<hr>
 
-## **Tabel 1: `users`**
+<h2>Tabel 1: <code>users</code></h2>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+  <tr><td>name</td><td>VARCHAR(255)</td><td>Nama lengkap pengguna</td></tr>
+  <tr><td>email</td><td>VARCHAR(255)</td><td>Unik, digunakan saat login</td></tr>
+  <tr><td>password</td><td>VARCHAR(255)</td><td>Terenkripsi (bcrypt)</td></tr>
+  <tr><td>role</td><td>ENUM</td><td>admin, customer, atau staff</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu data dibuat</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu data diperbarui</td></tr>
+</table>
 
-| Nama Field  | Tipe Data    | Keterangan                            |
-| ----------- | ------------ | ------------------------------------- |
-| id          | BIGINT       | Primary key, auto increment           |
-| name        | VARCHAR(255) | Nama lengkap pengguna                 |
-| email       | VARCHAR(255) | Email unik untuk login                |
-| password    | VARCHAR(255) | Password terenkripsi                  |
-| role        | ENUM         | Role pengguna: admin, customer, staff |
-| created\_at | TIMESTAMP    | Waktu data dibuat                     |
-| updated\_at | TIMESTAMP    | Waktu data diperbarui                 |
+<h2>Tabel 2: <code>kues</code></h2>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+  <tr><td>nama_kue</td><td>VARCHAR(255)</td><td>Nama kue</td></tr>
+  <tr><td>deskripsi</td><td>TEXT</td><td>Deskripsi tambahan</td></tr>
+  <tr><td>harga</td><td>INTEGER</td><td>Harga dalam rupiah</td></tr>
+  <tr><td>gambar</td><td>VARCHAR(255)</td><td>Path gambar</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
+</table>
 
----
+<h2>Tabel 3: <code>pesanans</code></h2>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+  <tr><td>user_id</td><td>BIGINT</td><td>Relasi ke tabel <code>users</code></td></tr>
+  <tr><td>kue_id</td><td>BIGINT</td><td>Relasi ke tabel <code>kues</code></td></tr>
+  <tr><td>jumlah</td><td>INTEGER</td><td>Jumlah kue dipesan</td></tr>
+  <tr><td>tanggal_pesan</td><td>DATE</td><td>Tanggal pemesanan</td></tr>
+  <tr><td>status</td><td>VARCHAR(50)</td><td>menunggu / diproses / selesai</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
+</table>
 
-## **Tabel 2: `kues`**
+<h2>Tabel 4: <code>staff_profiles</code></h2>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+  <tr><td>user_id</td><td>BIGINT</td><td>Relasi ke <code>users</code></td></tr>
+  <tr><td>jabatan</td><td>VARCHAR(100)</td><td>Opsional, deskripsi jabatan</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
+</table>
 
-| Nama Field  | Tipe Data    | Keterangan                  |
-| ----------- | ------------ | --------------------------- |
-| id          | BIGINT       | Primary key, auto increment |
-| nama\_kue   | VARCHAR(255) | Nama kue                    |
-| deskripsi   | TEXT         | Deskripsi kue (opsional)    |
-| harga       | INTEGER      | Harga kue                   |
-| gambar      | VARCHAR(255) | Nama file gambar kue        |
-| created\_at | TIMESTAMP    | Waktu data dibuat           |
-| updated\_at | TIMESTAMP    | Waktu data diperbarui       |
+<hr>
 
----
+<h2>Relasi Antar Tabel</h2>
+<ul>
+  <li><b>One to One</b>: <code>users</code> ↔ <code>staff_profiles</code><br>
+      → Satu user dengan role 'staff' memiliki satu data profil tambahan.</li>
+  <li><b>One to Many</b>: <code>users</code> → <code>pesanans</code><br>
+      → Customer dapat membuat banyak pesanan.</li>
+  <li><b>One to Many</b>: <code>kues</code> → <code>pesanans</code><br>
+      → Satu jenis kue bisa dipesan berkali-kali oleh banyak user.</li>
+  <li><b>Many to Many (opsional)</b>: <code>users</code> ↔ <code>kues</code><br>
+      → Digunakan untuk fitur favorit kue (jika dibuat).</li>
+</ul>
 
-## **Tabel 3: `pesanans`**
-
-| Nama Field     | Tipe Data   | Keterangan                                     |
-| -------------- | ----------- | ---------------------------------------------- |
-| id             | BIGINT      | Primary key, auto increment                    |
-| user\_id       | BIGINT      | Relasi ke tabel `users` (pelanggan pemesan)    |
-| kue\_id        | BIGINT      | Relasi ke tabel `kues` (kue yang dipesan)      |
-| jumlah         | INTEGER     | Jumlah pesanan                                 |
-| tanggal\_pesan | DATE        | Tanggal pemesanan                              |
-| status         | VARCHAR(50) | Status pemesanan (menunggu, diproses, selesai) |
-| created\_at    | TIMESTAMP   | Waktu data dibuat                              |
-| updated\_at    | TIMESTAMP   | Waktu data diperbarui                          |
-
----
-
-## **Relasi Antar Tabel**
-
-* `users` **one to many** `pesanans`
-
-  * Artinya: 1 user/customer bisa membuat banyak pesanan.
-
-* `kues` **one to many** `pesanans`
-
-  * Artinya: 1 jenis kue bisa dipesan dalam banyak pesanan.
-
-* `pesanans` **many to one** `users` dan `kues`
-
-  * Artinya: setiap pesanan terhubung ke 1 user dan 1 kue.
-
-</body>
-</html>
