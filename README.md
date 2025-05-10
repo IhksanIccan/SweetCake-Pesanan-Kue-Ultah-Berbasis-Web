@@ -81,7 +81,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   <tr>
     <td>Admin</td>
     <td>
-      - Mengelola data user (tambah staff, edit, hapus)<br>
+      - Mengelola data user (edit, hapus)<br>
       - Mengelola data kue<br>
       - Mengelola seluruh pesanan
     </td>
