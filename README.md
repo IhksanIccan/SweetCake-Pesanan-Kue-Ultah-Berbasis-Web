@@ -60,20 +60,37 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
-<p align="center">
-  <b>SweetCake</b><br>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>SweetCake - Sistem Pemesanan Kue Ultah</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { margin-top: 40px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #f0f0f0; }
+    hr { margin: 40px 0; }
+    .center { text-align: center; }
+  </style>
+</head>
+<body>
+
+<div class="center">
+  <h1>SweetCake</h1>
   <i>(Pesanan Kue Ultah Berbasis Web)</i><br><br>
-  <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150"><br><br>
+  <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150" alt="Logo"><br><br>
   <b>IHKSAN</b><br>
   <b>D0223049</b><br><br>
   Framework Web Based<br>
   2025
-</p>
+</div>
 
 <hr>
 
 <h2>Role dan Fitur-fiturnya</h2>
-<table border="1" cellspacing="0" cellpadding="5">
+<table>
   <tr>
     <th>Role</th>
     <th>Fitur</th>
@@ -81,88 +98,72 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   <tr>
     <td>Admin</td>
     <td>
-      - Mengelola data user (edit, hapus)<br>
-      - Mengelola data kue<br>
-      - Mengelola seluruh pesanan
+      - Mengelola data kue (tambah, edit, hapus)<br>
+      - Mengelola pesanan<br>
+      - Mengelola data user
     </td>
   </tr>
   <tr>
     <td>Customer</td>
     <td>
       - Melihat daftar kue<br>
-      - Melakukan pemesanan<br>
-      - Melihat riwayat & status pesanan
+      - Melakukan pemesanan kue<br>
+      - Melihat status pesanan
     </td>
   </tr>
   <tr>
     <td>Staff</td>
     <td>
-      - Melihat pesanan yang masuk<br>
-      - Mengubah status pesanan (diproses, selesai, dibatalkan)
+      - Melihat daftar pesanan yang masuk<br>
+      - Memperbarui status pesanan (diproses, selesai, dll)
     </td>
   </tr>
 </table>
 
-<hr>
-
 <h2>Tabel 1: <code>users</code></h2>
-<table border="1" cellspacing="0" cellpadding="5">
+<table>
   <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+  <tr><td>id</td><td>BIGINT</td><td>Primary key, auto increment</td></tr>
   <tr><td>name</td><td>VARCHAR(255)</td><td>Nama lengkap pengguna</td></tr>
-  <tr><td>email</td><td>VARCHAR(255)</td><td>Unik, digunakan saat login</td></tr>
-  <tr><td>password</td><td>VARCHAR(255)</td><td>Terenkripsi (bcrypt)</td></tr>
-  <tr><td>role</td><td>ENUM</td><td>admin, customer, atau staff</td></tr>
+  <tr><td>email</td><td>VARCHAR(255)</td><td>Email unik untuk login</td></tr>
+  <tr><td>password</td><td>VARCHAR(255)</td><td>Password terenkripsi</td></tr>
+  <tr><td>role</td><td>ENUM</td><td>Role: admin, customer, staff</td></tr>
   <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu data dibuat</td></tr>
   <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu data diperbarui</td></tr>
 </table>
 
 <h2>Tabel 2: <code>kues</code></h2>
-<table border="1" cellspacing="0" cellpadding="5">
+<table>
   <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+  <tr><td>id</td><td>BIGINT</td><td>Primary key, auto increment</td></tr>
   <tr><td>nama_kue</td><td>VARCHAR(255)</td><td>Nama kue</td></tr>
-  <tr><td>deskripsi</td><td>TEXT</td><td>Deskripsi tambahan</td></tr>
-  <tr><td>harga</td><td>INTEGER</td><td>Harga dalam rupiah</td></tr>
-  <tr><td>gambar</td><td>VARCHAR(255)</td><td>Path gambar</td></tr>
-  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
-  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
+  <tr><td>deskripsi</td><td>TEXT</td><td>Deskripsi kue (opsional)</td></tr>
+  <tr><td>harga</td><td>INTEGER</td><td>Harga kue</td></tr>
+  <tr><td>gambar</td><td>VARCHAR(255)</td><td>Nama file gambar kue</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu data dibuat</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu data diperbarui</td></tr>
 </table>
 
 <h2>Tabel 3: <code>pesanans</code></h2>
-<table border="1" cellspacing="0" cellpadding="5">
+<table>
   <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
-  <tr><td>user_id</td><td>BIGINT</td><td>Relasi ke tabel <code>users</code></td></tr>
-  <tr><td>kue_id</td><td>BIGINT</td><td>Relasi ke tabel <code>kues</code></td></tr>
-  <tr><td>jumlah</td><td>INTEGER</td><td>Jumlah kue dipesan</td></tr>
+  <tr><td>id</td><td>BIGINT</td><td>Primary key, auto increment</td></tr>
+  <tr><td>user_id</td><td>BIGINT</td><td>Foreign key ke <code>users</code></td></tr>
+  <tr><td>kue_id</td><td>BIGINT</td><td>Foreign key ke <code>kues</code></td></tr>
+  <tr><td>jumlah</td><td>INTEGER</td><td>Jumlah kue yang dipesan</td></tr>
   <tr><td>tanggal_pesan</td><td>DATE</td><td>Tanggal pemesanan</td></tr>
-  <tr><td>status</td><td>VARCHAR(50)</td><td>menunggu / diproses / selesai</td></tr>
-  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
-  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
+  <tr><td>status</td><td>VARCHAR(50)</td><td>Status: menunggu, diproses, selesai</td></tr>
+  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu data dibuat</td></tr>
+  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu data diperbarui</td></tr>
 </table>
-
-<h2>Tabel 4: <code>staff_profiles</code></h2>
-<table border="1" cellspacing="0" cellpadding="5">
-  <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
-  <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
-  <tr><td>user_id</td><td>BIGINT</td><td>Relasi ke <code>users</code></td></tr>
-  <tr><td>jabatan</td><td>VARCHAR(100)</td><td>Opsional, deskripsi jabatan</td></tr>
-  <tr><td>created_at</td><td>TIMESTAMP</td><td>Waktu dibuat</td></tr>
-  <tr><td>updated_at</td><td>TIMESTAMP</td><td>Waktu diperbarui</td></tr>
-</table>
-
-<hr>
 
 <h2>Relasi Antar Tabel</h2>
 <ul>
-  <li><b>One to One</b>: <code>users</code> ↔ <code>staff_profiles</code><br>
-      → Satu user dengan role 'staff' memiliki satu data profil tambahan.</li>
-  <li><b>One to Many</b>: <code>users</code> → <code>pesanans</code><br>
-      → Customer dapat membuat banyak pesanan.</li>
-  <li><b>One to Many</b>: <code>kues</code> → <code>pesanans</code><br>
-      → Satu jenis kue bisa dipesan berkali-kali oleh banyak user.</li>
-  <li><b>Many to Many (opsional)</b>: <code>users</code> ↔ <code>kues</code><br>
-      → Digunakan untuk fitur favorit kue (jika dibuat).</li>
+  <li><strong>Users → Pesanans</strong>: One to Many<br>Setiap user (customer) bisa memiliki banyak pesanan.</li>
+  <li><strong>Kues → Pesanans</strong>: One to Many<br>Setiap kue bisa dipesan dalam banyak pesanan.</li>
+  <li><strong>Pesanans → Users & Kues</strong>: Many to One<br>Setiap pesanan terhubung ke 1 user dan 1 kue.</li>
 </ul>
+
+</body>
+</html>
 
