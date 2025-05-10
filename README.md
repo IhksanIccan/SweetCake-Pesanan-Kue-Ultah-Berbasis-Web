@@ -60,32 +60,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <title>SweetCake - Sistem Pemesanan Kue Ultah</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    h2 { margin-top: 40px; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-    th { background-color: #f0f0f0; }
-    hr { margin: 40px 0; }
-    .center { text-align: center; }
-  </style>
-</head>
-<body>
-
-<div class="center">
-  <h1>SweetCake</h1>
+<p align="center">
+  <b>SweetCake</b><br>
   <i>(Pesanan Kue Ultah Berbasis Web)</i><br><br>
-  <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150" alt="Logo"><br><br>
+  <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150"><br><br>
   <b>IHKSAN</b><br>
   <b>D0223049</b><br><br>
   Framework Web Based<br>
   2025
-</div>
+</p>
 
 <hr>
 
@@ -166,4 +149,3 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 </body>
 </html>
-
