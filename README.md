@@ -83,7 +83,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ---
 
 <h2>B. Struktur Tabel dan Relasi</h2>
-
+1.user
 | Field       | Tipe Data    | Keterangan                  |
 | ----------- | ------------ | --------------------------- |
 | id          | BIGINT       | Primary key, auto increment |
