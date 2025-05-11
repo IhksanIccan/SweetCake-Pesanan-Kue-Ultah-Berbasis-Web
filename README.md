@@ -72,24 +72,85 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ---
 
-<h2>A. Role dan Fitur-Fitur</h2>
+### **Role dan Fitur-Fitur**
 
-| Role     | Fitur-Fitur                                                                               |
-| -------- | ----------------------------------------------------------------------------------------- |
-| Admin    | - Mengelola data kue (tambah, edit, hapus) <br> - Mengelola pesanan <br> - Mengelola user |
-| Customer | - Melihat daftar kue <br> - Melakukan pemesanan <br> - Melihat status pesanan             |
-| Staff    | - Melihat daftar pesanan yang masuk <br> - Memperbarui status pesanan                     |
+| Role     | Fitur-Fitur                                                                    |
+| -------- | ------------------------------------------------------------------------------ |
+| Admin    | - Kelola data kue (tambah, edit, hapus)<br>- Kelola pesanan<br>- Kelola user   |
+| Customer | - Lihat daftar kue<br>- Pesan kue<br>- Lihat status pesanan                    |
+| Staff    | - Lihat pesanan yang masuk<br>- Update status pesanan (diproses, selesai, dll) |
 
 ---
 
-<h2>B. Struktur Tabel dan Relasi</h2>
-1.user
+### **Struktur Tabel**
+
+#### **1. users**
+
 | Field       | Tipe Data    | Keterangan                  |
 | ----------- | ------------ | --------------------------- |
 | id          | BIGINT       | Primary key, auto increment |
 | name        | VARCHAR(255) | Nama lengkap                |
-| email       | VARCHAR(255) | Email unik                  |
+| email       | VARCHAR(255) | Email unik untuk login      |
 | password    | VARCHAR(255) | Password terenkripsi        |
 | role        | ENUM         | admin, customer, staff      |
-| created\_at | TIMESTAMP    | Waktu data dibuat           |
-| updated\_at | TIMESTAMP    | Waktu data diperbarui       |
+| created\_at | TIMESTAMP    | Tanggal dibuat              |
+| updated\_at | TIMESTAMP    | Tanggal diperbarui          |
+
+#### **2. customer\_profiles**
+
+| Field       | Tipe Data   | Keterangan                  |
+| ----------- | ----------- | --------------------------- |
+| id          | BIGINT      | Primary key, auto increment |
+| user\_id    | BIGINT      | Foreign key ke `users`      |
+| alamat      | TEXT        | Alamat customer             |
+| no\_hp      | VARCHAR(20) | Nomor HP                    |
+| created\_at | TIMESTAMP   | Tanggal dibuat              |
+| updated\_at | TIMESTAMP   | Tanggal diperbarui          |
+
+#### **3. kues**
+
+| Field       | Tipe Data    | Keterangan                  |
+| ----------- | ------------ | --------------------------- |
+| id          | BIGINT       | Primary key, auto increment |
+| nama\_kue   | VARCHAR(255) | Nama kue                    |
+| deskripsi   | TEXT         | Deskripsi kue               |
+| harga       | INTEGER      | Harga kue                   |
+| gambar      | VARCHAR(255) | Nama file gambar            |
+| created\_at | TIMESTAMP    | Tanggal dibuat              |
+| updated\_at | TIMESTAMP    | Tanggal diperbarui          |
+
+#### **4. pesanans**
+
+| Field          | Tipe Data   | Keterangan                          |
+| -------------- | ----------- | ----------------------------------- |
+| id             | BIGINT      | Primary key, auto increment         |
+| user\_id       | BIGINT      | Foreign key ke `users` (customer)   |
+| kue\_id        | BIGINT      | Foreign key ke `kues`               |
+| jumlah         | INTEGER     | Jumlah kue yang dipesan             |
+| tanggal\_pesan | DATE        | Tanggal pemesanan                   |
+| status         | VARCHAR(50) | Status: menunggu, diproses, selesai |
+| created\_at    | TIMESTAMP   | Tanggal dibuat                      |
+| updated\_at    | TIMESTAMP   | Tanggal diperbarui                  |
+
+#### **5. pesanan\_staff** (Tabel Relasi Staff-Pesanan)
+
+| Field       | Tipe Data | Keterangan                           |
+| ----------- | --------- | ------------------------------------ |
+| id          | BIGINT    | Primary key, auto increment          |
+| pesanan\_id | BIGINT    | Foreign key ke `pesanans`            |
+| staff\_id   | BIGINT    | Foreign key ke `users` (role: staff) |
+| created\_at | TIMESTAMP | Tanggal dibuat                       |
+| updated\_at | TIMESTAMP | Tanggal diperbarui                   |
+
+---
+
+### **Relasi Antar Tabel**
+
+| Relasi                        | Jenis Relasi | Keterangan                                            |
+| ----------------------------- | ------------ | ----------------------------------------------------- |
+| `users` ↔ `customer_profiles` | One to One   | Setiap customer punya 1 data profil                   |
+| `users` ↔ `pesanans`          | One to Many  | Customer bisa membuat banyak pesanan                  |
+| `kues` ↔ `pesanans`           | One to Many  | 1 kue bisa dipesan dalam banyak pesanan               |
+| `users` ↔ `pesanan_staff`     | One to Many  | Staff bisa menangani banyak entri di tabel penghubung |
+| `pesanans` ↔ `pesanan_staff`  | One to Many  | 1 pesanan bisa ditangani banyak staff                 |
+| `users` ↔ `pesanans` (staff)  | Many to Many | Relasi staff ↔ pesanan melalui tabel `pesanan_staff`  |
