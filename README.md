@@ -73,7 +73,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ---
 
 <h2>A. Role dan Fitur-Fitur</h2>
-
 | Role     | Fitur-Fitur                                                                               |
 | -------- | ----------------------------------------------------------------------------------------- |
 | Admin    | - Mengelola data kue (tambah, edit, hapus) <br> - Mengelola pesanan <br> - Mengelola user |
@@ -83,7 +82,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ---
 
 <h2>B. Struktur Tabel dan Relasi</h2>
-
 | Field       | Tipe Data    | Keterangan                  |
 | ----------- | ------------ | --------------------------- |
 | id          | BIGINT       | Primary key, auto increment |
