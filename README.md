@@ -132,7 +132,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 | created\_at    | TIMESTAMP   | Tanggal dibuat                      |
 | updated\_at    | TIMESTAMP   | Tanggal diperbarui                  |
 
-#### **5. pesanan\_staff** (Tabel Relasi Staff-Pesanan)
+#### **5. pesanan\_staff**
 
 | Field       | Tipe Data | Keterangan                           |
 | ----------- | --------- | ------------------------------------ |
@@ -151,6 +151,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 | `users` ↔ `customer_profiles` | One to One   | Setiap customer punya 1 data profil                   |
 | `users` ↔ `pesanans`          | One to Many  | Customer bisa membuat banyak pesanan                  |
 | `kues` ↔ `pesanans`           | One to Many  | 1 kue bisa dipesan dalam banyak pesanan               |
-| `users` ↔ `pesanan_staff`     | One to Many  | Staff bisa menangani banyak entri di tabel penghubung |
-| `pesanans` ↔ `pesanan_staff`  | One to Many  | 1 pesanan bisa ditangani banyak staff                 |
 | `users` ↔ `pesanans` (staff)  | Many to Many | Relasi staff ↔ pesanan melalui tabel `pesanan_staff`  |
