@@ -71,7 +71,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 </p>
 
 ---
-A. Role dan Fitur-Fitur
+<h2>A. Role dan Fitur-Fitur</h2>
 | Role     | Fitur-Fitur                                                                               |
 | -------- | ----------------------------------------------------------------------------------------- |
 | Admin    | - Mengelola data kue (tambah, edit, hapus) <br> - Mengelola pesanan <br> - Mengelola user |
@@ -79,3 +79,13 @@ A. Role dan Fitur-Fitur
 | Staff    | - Melihat daftar pesanan yang masuk <br> - Memperbarui status pesanan                     |
 
 ---
+<h2>B. Struktur Tabel dan Relasi</h2>
+| Field       | Tipe Data    | Keterangan                  |
+| ----------- | ------------ | --------------------------- |
+| id          | BIGINT       | Primary key, auto increment |
+| name        | VARCHAR(255) | Nama lengkap                |
+| email       | VARCHAR(255) | Email unik                  |
+| password    | VARCHAR(255) | Password terenkripsi        |
+| role        | ENUM         | admin, customer, staff      |
+| created\_at | TIMESTAMP    | Waktu data dibuat           |
+| updated\_at | TIMESTAMP    | Waktu data diperbarui       |
