@@ -1,154 +1,200 @@
-<!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Laporan SweetCake</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 40px;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    h2 {
+      margin-top: 40px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+    }
+    .center {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+  <div class="center">
+    <h1>SweetCake</h1>
+    <p><i>(Pesanan Kue Ultah Berbasis Web)</i></p>
+    <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150" alt="Logo"><br><br>
+    <strong>IHKSAN</strong><br>
+    <strong>D0223049</strong><br>
+    <p>Framework Web Based<br>2025</p>
+  </div>
 
-## About Laravel
+  <hr>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  <h2>Role dan Fitur-Fitur</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Fitur-Fitur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Admin</td>
+        <td>
+          - Kelola semua pengguna<br>
+          - Kelola semua pesanan<br>
+          - Pantau data kue
+        </td>
+      </tr>
+      <tr>
+        <td>Penjual</td>
+        <td>
+          - Tambah/edit/hapus kue<br>
+          - Lihat pesanan yang masuk
+        </td>
+      </tr>
+      <tr>
+        <td>Pembeli</td>
+        <td>
+          - Lihat daftar kue<br>
+          - Pesan kue<br>
+          - Lihat status dan riwayat pesanan
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  <h2>Struktur Tabel</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  <h3>1. users</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th><th>Tipe Data</th><th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>id</td><td>BIGINT</td><td>Primary key, auto increment</td></tr>
+      <tr><td>name</td><td>VARCHAR(255)</td><td>Nama lengkap pengguna</td></tr>
+      <tr><td>email</td><td>VARCHAR(255)</td><td>Email unik untuk login</td></tr>
+      <tr><td>password</td><td>VARCHAR(255)</td><td>Password terenkripsi</td></tr>
+      <tr><td>role</td><td>ENUM</td><td>admin, penjual, pembeli</td></tr>
+      <tr><td>created_at</td><td>TIMESTAMP</td><td>Tanggal dibuat otomatis</td></tr>
+      <tr><td>updated_at</td><td>TIMESTAMP</td><td>Tanggal diperbarui otomatis</td></tr>
+    </tbody>
+  </table>
 
-## Learning Laravel
+  <h3>2. profiles</h3>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+      <tr><td>user_id</td><td>BIGINT</td><td>Relasi ke tabel users</td></tr>
+      <tr><td>alamat</td><td>TEXT</td><td>Alamat lengkap pengguna</td></tr>
+      <tr><td>no_hp</td><td>VARCHAR(20)</td><td>Nomor telepon pengguna</td></tr>
+      <tr><td>created_at</td><td>TIMESTAMP</td><td>Tanggal dibuat</td></tr>
+      <tr><td>updated_at</td><td>TIMESTAMP</td><td>Tanggal diperbarui</td></tr>
+    </tbody>
+  </table>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+  <h3>3. kues</h3>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+      <tr><td>user_id</td><td>BIGINT</td><td>Foreign key ke users (penjual)</td></tr>
+      <tr><td>nama_kue</td><td>VARCHAR(255)</td><td>Nama kue</td></tr>
+      <tr><td>deskripsi</td><td>TEXT</td><td>Deskripsi kue</td></tr>
+      <tr><td>harga</td><td>INTEGER</td><td>Harga dalam rupiah</td></tr>
+      <tr><td>gambar</td><td>VARCHAR(255)</td><td>Nama file gambar kue</td></tr>
+      <tr><td>created_at</td><td>TIMESTAMP</td><td>Tanggal dibuat</td></tr>
+      <tr><td>updated_at</td><td>TIMESTAMP</td><td>Tanggal diperbarui</td></tr>
+    </tbody>
+  </table>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+  <h3>4. pesanans</h3>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+      <tr><td>user_id</td><td>BIGINT</td><td>Relasi ke users (pembeli)</td></tr>
+      <tr><td>tanggal_pesan</td><td>DATE</td><td>Tanggal dilakukan pemesanan</td></tr>
+      <tr><td>status</td><td>VARCHAR(50)</td><td>Status: menunggu, diproses, selesai, dibatalkan</td></tr>
+      <tr><td>created_at</td><td>TIMESTAMP</td><td>Tanggal dibuat</td></tr>
+      <tr><td>updated_at</td><td>TIMESTAMP</td><td>Tanggal diperbarui</td></tr>
+    </tbody>
+  </table>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  <h3>5. kue_pesanan (pivot)</h3>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+      <tr><td>pesanan_id</td><td>BIGINT</td><td>Foreign key ke pesanans</td></tr>
+      <tr><td>kue_id</td><td>BIGINT</td><td>Foreign key ke kues</td></tr>
+      <tr><td>jumlah</td><td>INTEGER</td><td>Jumlah item yang dipesan</td></tr>
+      <tr><td>created_at</td><td>TIMESTAMP</td><td>Tanggal dibuat</td></tr>
+      <tr><td>updated_at</td><td>TIMESTAMP</td><td>Tanggal diperbarui</td></tr>
+    </tbody>
+  </table>
 
-## Laravel Sponsors
+  <h3>6. pembayaran</h3>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>id</td><td>BIGINT</td><td>Primary key</td></tr>
+      <tr><td>pesanan_id</td><td>BIGINT</td><td>Relasi ke pesanans</td></tr>
+      <tr><td>metode</td><td>VARCHAR(100)</td><td>Transfer, COD, dll</td></tr>
+      <tr><td>status_bayar</td><td>VARCHAR(50)</td><td>Lunas / Belum Lunas</td></tr>
+      <tr><td>created_at</td><td>TIMESTAMP</td><td>Tanggal dibuat</td></tr>
+      <tr><td>updated_at</td><td>TIMESTAMP</td><td>Tanggal diperbarui</td></tr>
+    </tbody>
+  </table>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+  <h2>Relasi Antar Tabel</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Relasi</th>
+        <th>Jenis Relasi</th>
+        <th>Keterangan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>users ↔ profiles</td><td>One to One</td><td>Setiap pengguna memiliki 1 profil</td></tr>
+      <tr><td>users ↔ kues</td><td>One to Many</td><td>Penjual memiliki banyak kue</td></tr>
+      <tr><td>users ↔ pesanans</td><td>One to Many</td><td>Pembeli dapat memiliki banyak pesanan</td></tr>
+      <tr><td>pesanans ↔ kues</td><td>Many to Many</td><td>Relasi lewat tabel pivot kue_pesanan</td></tr>
+      <tr><td>pesanans ↔ pembayaran</td><td>One to One</td><td>Satu pesanan memiliki satu data pembayaran</td></tr>
+    </tbody>
+  </table>
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
-
-<p align="center">
-  <b>SweetCake</b><br>
-  <i>(Pesanan Kue Ultah Berbasis Web)</i><br><br>
-  <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150"><br><br>
-  <b>IHKSAN</b><br>
-  <b>D0223049</b><br><br>
-  Framework Web Based<br>
-  2025
-</p>
-
----
-
-### **Role dan Fitur-Fitur**
-
-| Role     | Fitur-Fitur                                                                    |
-| -------- | ------------------------------------------------------------------------------ |
-| Admin    | - Kelola data kue (tambah, edit, hapus)<br>- Kelola pesanan<br>- Kelola user   |
-| Customer | - Lihat daftar kue<br>- Pesan kue<br>- Lihat status pesanan                    |
-| Staff    | - Lihat pesanan yang masuk<br>- Update status pesanan (diproses, selesai, dll) |
-
----
-
-### **Struktur Tabel**
-
-#### **1. users**
-
-| Field       | Tipe Data    | Keterangan                  |
-| ----------- | ------------ | --------------------------- |
-| id          | BIGINT       | Primary key, auto increment |
-| name        | VARCHAR(255) | Nama lengkap                |
-| email       | VARCHAR(255) | Email unik untuk login      |
-| password    | VARCHAR(255) | Password terenkripsi        |
-| role        | ENUM         | admin, customer, staff      |
-| created\_at | TIMESTAMP    | Tanggal dibuat              |
-| updated\_at | TIMESTAMP    | Tanggal diperbarui          |
-
-#### **2. customer\_profiles**
-
-| Field       | Tipe Data   | Keterangan                  |
-| ----------- | ----------- | --------------------------- |
-| id          | BIGINT      | Primary key, auto increment |
-| user\_id    | BIGINT      | Foreign key ke `users`      |
-| alamat      | TEXT        | Alamat customer             |
-| no\_hp      | VARCHAR(20) | Nomor HP                    |
-| created\_at | TIMESTAMP   | Tanggal dibuat              |
-| updated\_at | TIMESTAMP   | Tanggal diperbarui          |
-
-#### **3. kues**
-
-| Field       | Tipe Data    | Keterangan                  |
-| ----------- | ------------ | --------------------------- |
-| id          | BIGINT       | Primary key, auto increment |
-| nama\_kue   | VARCHAR(255) | Nama kue                    |
-| deskripsi   | TEXT         | Deskripsi kue               |
-| harga       | INTEGER      | Harga kue                   |
-| gambar      | VARCHAR(255) | Nama file gambar            |
-| created\_at | TIMESTAMP    | Tanggal dibuat              |
-| updated\_at | TIMESTAMP    | Tanggal diperbarui          |
-
-#### **4. pesanans**
-
-| Field          | Tipe Data   | Keterangan                          |
-| -------------- | ----------- | ----------------------------------- |
-| id             | BIGINT      | Primary key, auto increment         |
-| user\_id       | BIGINT      | Foreign key ke `users` (customer)   |
-| kue\_id        | BIGINT      | Foreign key ke `kues`               |
-| jumlah         | INTEGER     | Jumlah kue yang dipesan             |
-| tanggal\_pesan | DATE        | Tanggal pemesanan                   |
-| status         | VARCHAR(50) | Status: menunggu, diproses, selesai |
-| created\_at    | TIMESTAMP   | Tanggal dibuat                      |
-| updated\_at    | TIMESTAMP   | Tanggal diperbarui                  |
-
-#### **5. pesanan\_staff**
-
-| Field       | Tipe Data | Keterangan                           |
-| ----------- | --------- | ------------------------------------ |
-| id          | BIGINT    | Primary key, auto increment          |
-| pesanan\_id | BIGINT    | Foreign key ke `pesanans`            |
-| staff\_id   | BIGINT    | Foreign key ke `users` (role: staff) |
-| created\_at | TIMESTAMP | Tanggal dibuat                       |
-| updated\_at | TIMESTAMP | Tanggal diperbarui                   |
-
----
-
-### **Relasi Antar Tabel**
-
-| Relasi                        | Jenis Relasi | Keterangan                                            |
-| ----------------------------- | ------------ | ----------------------------------------------------- |
-| `users` ↔ `customer_profiles` | One to One   | Setiap customer punya 1 data profil                   |
-| `users` ↔ `pesanans`          | One to Many  | Customer bisa membuat banyak pesanan                  |
-| `kues` ↔ `pesanans`           | One to Many  | 1 kue bisa dipesan dalam banyak pesanan               |
-| `users` ↔ `pesanans` (staff)  | Many to Many | Relasi staff ↔ pesanan melalui tabel `pesanan_staff`  |
+</body>
+</html>
