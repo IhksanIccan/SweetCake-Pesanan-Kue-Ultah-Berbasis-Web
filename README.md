@@ -1,48 +1,14 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Laporan SweetCake</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 40px;
-      color: #333;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    th, td {
-      border: 1px solid #999;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid #333;
-      padding-bottom: 5px;
-    }
-    .center {
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
+<p align="center">
+  <b>Agenda Sekolah</b><br>
+  <i>(Manajemen Kegiatan Sekolah)</i><br><br>
+  <img src="images/logoUnsulbar.jpg" width="150"><br><br>
+  <b>Faril</b><br>
+  <b>D0223015</b><br><br>
+  Framework Web Based<br>
+  2025
+</p>
 
-  <div class="center">
-    <h1>SweetCake</h1>
-    <p><i>(Pesanan Kue Ultah Berbasis Web)</i></p>
-    <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150" alt="Logo"><br><br>
-    <strong>IHKSAN</strong><br>
-    <strong>D0223049</strong><br>
-    <p>Framework Web Based<br>2025</p>
-  </div>
+---
 
   <hr>
 
