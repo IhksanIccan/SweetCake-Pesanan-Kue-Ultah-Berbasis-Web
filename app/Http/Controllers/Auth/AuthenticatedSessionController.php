@@ -24,12 +24,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+    $request->authenticate();
+    $request->session()->regenerate();
 
-        $request->session()->regenerate();
+    // Cek role user
+    $user = Auth::user();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+    if ($user->role === 'admin') {
+        return redirect()->route('layouts.dashboardAdmin');
+    } elseif ($user->role === 'staff') {
+        return redirect()->route('layouts.dashboardStaff');
+    // } elseif ($user->role === 'customer') {
+    //     return redirect()->route('ayouts.dashboardCustumer');
+    } else {
+        return redirect()->route('layouts.dashboardCustumer'); // default untuk customer
     }
+}
+
 
     /**
      * Destroy an authenticated session.
@@ -44,4 +55,5 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+    
 }
