@@ -1,9 +1,9 @@
 <p align="center">
-  <b>Agenda Sekolah</b><br>
-  <i>(Manajemen Kegiatan Sekolah)</i><br><br>
+  <b>SweetCake</b><br>
+  <i>(Toko Ulang Tahun Online)</i><br><br>
   <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150" alt="Logo"><br><br>
-  <b>Faril</b><br>
-  <b>D0223015</b><br><br>
+  <b>IHKSAN</b><br>
+  <b>D0223049</b><br><br>
   Framework Web Based<br>
   2025
 </p>
