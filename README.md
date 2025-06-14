@@ -1,7 +1,7 @@
 <p align="center">
   <b>Agenda Sekolah</b><br>
   <i>(Manajemen Kegiatan Sekolah)</i><br><br>
-  <img src="images/logoUnsulbar.jpg" width="150"><br><br>
+  <img src="https://github.com/user-attachments/assets/8186e035-a8c5-4974-beee-ca21c8e2b71b" width="150" alt="Logo"><br><br>
   <b>Faril</b><br>
   <b>D0223015</b><br><br>
   Framework Web Based<br>
