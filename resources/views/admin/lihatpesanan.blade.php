@@ -17,7 +17,7 @@
                 <table class="table table-bordered table-hover align-middle" width="100%">
                     <thead class="thead-dark">
                         <tr>
-                            <th>No</th>
+                            <th>Nomor</th>
                             <th>Pembeli</th>
                             <th>Total Harga</th>
                             <th>Status</th>
